@@ -73,7 +73,7 @@
 						:event="e"
 						:weekStartDate="weekStart"
 						:top="getEventTop(e)"
-						:methods="[onDragStart, onMouseEnter, onMouseLeave, onClickEvent, getEventTitle]"
+						:methods="{onDragStart, onMouseEnter, onMouseLeave, onClickEvent, getEventTitle}"
 						name="event"
 					>
 						<div

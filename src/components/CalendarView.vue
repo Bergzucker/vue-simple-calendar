@@ -73,7 +73,7 @@
 						:event="e"
 						:weekStartDate="weekStart"
 						:top="getEventTop(e)"
-						:methods="{onDragStart, onMouseEnter, onMouseLeave, onClickEvent, getEventTitle}"
+						:methods="{'onDragStart':onDragStart, 'onMouseEnter':onMouseEnter, 'onMouseLeave':onMouseLeave, 'onClickEvent':onClickEvent, 'getEventTitle':getEventTitle}"
 						name="event"
 					>
 						<div
@@ -442,6 +442,10 @@ export default {
 					if (b.startDate < a.startDate) return 1
 					if (a.endDate > b.endDate) return -1
 					if (b.endDate > a.endDate) return 1
+					if(a.startDate == b.startDate) {
+						if(a.originalEvent.name < b.originalEvent.name) return -1
+						if(a.originalEvent.name > b.originalEvent.name) return 1
+					}
 					return a.id < b.id ? -1 : 1
 				})
 			return events

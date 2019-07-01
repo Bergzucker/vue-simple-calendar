@@ -438,11 +438,11 @@ export default {
 					this
 				)
 				.sort((a, b) => {
-					if (a.startDate < b.startDate) return -1
-					if (b.startDate < a.startDate) return 1
-					if (a.endDate > b.endDate) return -1
-					if (b.endDate > a.endDate) return 1
-					if(a.startDate == b.startDate) {
+					if (a.startDate.getTime() < b.startDate.getTime()) return -1
+					if (b.startDate.getTime() < a.startDate.getTime()) return 1
+					if (a.endDate.getTime() > b.endDate.getTime()) return -1
+					if (b.endDate.getTime() > a.endDate.getTime()) return 1
+					if (a.startDate.getTime() == b.startDate.getTime()) {
 						if(a.originalEvent.name < b.originalEvent.name) return -1
 						if(a.originalEvent.name > b.originalEvent.name) return 1
 					}

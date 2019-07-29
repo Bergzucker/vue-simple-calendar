@@ -73,7 +73,7 @@
 						:event="e"
 						:weekStartDate="weekStart"
 						:top="getEventTop(e)"
-						:methods="{'onDragStart':onDragStart, 'onMouseEnter':onMouseEnter, 'onMouseLeave':onMouseLeave, 'onClickEvent':onClickEvent, 'getEventTitle':getEventTitle}"
+						:methods="{'onDragOverEvent': onDragOverEvent,'onDragOverEvent': onDragOverEvent, 'onDragStart':onDragStart, 'onMouseEnter':onMouseEnter, 'onMouseLeave':onMouseLeave, 'onClickEvent':onClickEvent, 'getEventTitle':getEventTitle}"
 						name="event"
 					>
 						<div
@@ -83,6 +83,8 @@
 							:title="e.title"
 							:style="`top:${getEventTop(e)};${e.originalEvent.style}`"
 							class="cv-event"
+							@dragover="onDragOverEvent(e, $event)"
+							@dragleave="onDragLeaveEvent(e, $event)"
 							@dragstart="onDragStart(e, $event)"
 							@mouseenter="onMouseEnter(e)"
 							@mouseleave="onMouseLeave"
@@ -401,6 +403,13 @@ export default {
 			}
 			this.$emit(bubbleEventName, this.currentDragEvent, bubbleParam)
 			return true
+		},
+
+		onDragOverEvent(event, $event) {
+			windowEvent.target.classList.add("drag-over-event")
+		},
+		onDragLeaveEvent(event, $event) {
+			windowEvent.target.classList.remove("drag-over-event")
 		},
 
 		onDragOver(day) {

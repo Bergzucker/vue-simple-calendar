@@ -73,7 +73,7 @@
 						:event="e"
 						:weekStartDate="weekStart"
 						:top="getEventTop(e)"
-						:methods="{'onDragOverEvent': onDragOverEvent,'onDragOverEvent': onDragOverEvent, 'onDragStart':onDragStart, 'onMouseEnter':onMouseEnter, 'onMouseLeave':onMouseLeave, 'onClickEvent':onClickEvent, 'getEventTitle':getEventTitle}"
+						:methods="{'onDragOverEvent': onDragOver,'onDragEnterEvent': onDragEnter, 'onDragLeaveEvent':onDragLeave, 'onDragStart':onDragStart, 'onMouseEnter':onMouseEnter, 'onMouseLeave':onMouseLeave, 'onClickEvent':onClickEvent, 'getEventTitle':getEventTitle}"
 						name="event"
 					>
 						<div
@@ -85,6 +85,7 @@
 							class="cv-event"
 							@dragover.prevent="onDragOver(day)"
 							@dragenter.prevent="onDragEnter(day, $event)"
+							@dragleave.prevent="onDragLeave(day, $event)"
 							@dragstart="onDragStart(e, $event)"
 							@mouseenter="onMouseEnter(e)"
 							@mouseleave="onMouseLeave"
